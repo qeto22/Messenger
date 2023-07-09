@@ -1,59 +1,141 @@
 package com.kbachtbasi.messaging
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
+import com.kbachtbasi.messaging.databinding.FragmentSettingsBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SettingsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SettingsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentSettingsBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var viewModel: SettingsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false)
+    ): View {
+        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+
+        viewModel = ViewModelProvider(this)[SettingsViewModel::class.java]
+
+        viewModel.editInProgress.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.nickname.visibility = View.GONE
+                binding.nicknameEditText.visibility = View.VISIBLE
+                binding.nicknameEditText.requestFocus()
+                binding.profession.visibility = View.GONE
+                binding.professionEditText.visibility = View.VISIBLE
+
+
+                binding.updateBtn.text = "Save"
+            } else {
+                binding.nickname.visibility = View.VISIBLE
+                binding.nicknameEditText.visibility = View.GONE
+                binding.profession.visibility = View.VISIBLE
+                binding.professionEditText.visibility = View.GONE
+
+                binding.updateBtn.text = "Update"
+            }
+        }
+
+        viewModel.nickname.observe(viewLifecycleOwner) { nickname ->
+            binding.nickname.text = nickname
+        }
+
+        viewModel.editedNickname.observe(viewLifecycleOwner) { editedNickname ->
+            if (binding.nicknameEditText.text.toString() != editedNickname) {
+                binding.nicknameEditText.setText(editedNickname)
+            }
+        }
+
+        viewModel.profession.observe(viewLifecycleOwner) { profession ->
+            binding.profession.text = profession
+        }
+
+        viewModel.editedProfession.observe(viewLifecycleOwner) { editedProfession ->
+            if (binding.professionEditText.text.toString() != editedProfession) {
+                binding.professionEditText.setText(editedProfession)
+            }
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            binding.progressBarWrapper.visibility = View.GONE
+            if (error != null) {
+                Snackbar.make(binding.root, error, Snackbar.LENGTH_SHORT).show()
+            }
+        }
+
+        viewModel.fetchData()
+
+        binding.logout.setOnClickListener {
+            viewModel.logout()
+        }
+
+        binding.updateBtn.setOnClickListener {
+            if (viewModel.editInProgress.value == true) {
+                if (isFormValid()) {
+                    binding.progressBarWrapper.visibility = View.VISIBLE
+                    viewModel.finishEdit()
+                }
+            } else {
+                viewModel.startEdit()
+            }
+        }
+
+        binding.nicknameEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                viewModel.nicknameEdited(s.toString())
+            }
+
+        })
+
+        binding.professionEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                viewModel.professionEdited(s.toString())
+            }
+
+        })
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SettingsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SettingsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun isFormValid(): Boolean {
+        var isFormValid = true
+
+        val nickname = binding.nicknameEditText.text.toString()
+        val profession = binding.professionEditText.text.toString()
+
+        if (nickname.trim() == "") {
+            binding.nicknameEditText.error = "Please enter username"
+            isFormValid = false
+        }
+
+        if (profession.trim() == "") {
+            binding.professionEditText.error = "Please enter profession"
+            isFormValid = false
+        }
+
+        return isFormValid
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

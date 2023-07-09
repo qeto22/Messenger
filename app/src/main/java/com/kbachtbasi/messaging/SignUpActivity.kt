@@ -2,6 +2,7 @@ package com.kbachtbasi.messaging
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -36,12 +37,14 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         viewModel.signUpSuccessLiveData.observe(this, Observer { success ->
+            binding.progressBarWrapper.visibility = View.GONE
             if (success) {
                 finish()
             }
         })
 
         viewModel.signUpErrorLiveData.observe(this, Observer { errorMessage ->
+            binding.progressBarWrapper.visibility = View.GONE
             Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_SHORT).show()
         })
     }
@@ -51,6 +54,7 @@ class SignUpActivity : AppCompatActivity() {
         val password = binding.passwordInput.text.toString()
         val profession = binding.professionInput.text.toString()
 
+        binding.progressBarWrapper.visibility = View.VISIBLE
         viewModel.signUpUser(username, password, profession)
     }
 

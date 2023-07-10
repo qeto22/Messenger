@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SettingsFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -14,122 +14,129 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <ImageView
-            android:layout_width="192dp"
-            android:layout_height="192dp"
-            android:src="@drawable/avatar_image_placeholder"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/profilePicture"
-            android:contentDescription="@string/profile_picture" />
-
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"
-            app:layout_constraintTop_toBottomOf="@id/profilePicture"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:textSize="16sp"
-            android:textColorHint="@color/hint_color"
-            android:background="@drawable/main_edittext"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="12dp"
-            android:gravity="center"
-            android:id="@+id/nickname" />
+            android:layout_marginBottom="32dp">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            app:layout_constraintTop_toBottomOf="@id/profilePicture"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:textSize="16sp"
-            android:textColorHint="@color/hint_color"
-            android:background="@drawable/main_edittext"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="12dp"
-            android:gravity="center"
-            android:id="@+id/nicknameEditText"
-            android:visibility="gone"/>
+            <ImageView
+                android:layout_width="192dp"
+                android:layout_height="192dp"
+                android:src="@drawable/avatar_image_placeholder"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/profilePicture"
+                android:contentDescription="@string/profile_picture" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            app:layout_constraintTop_toBottomOf="@id/nickname"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/updateBtn"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:textSize="16sp"
-            android:textColorHint="@color/hint_color"
-            android:background="@drawable/main_edittext"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="12dp"
-            android:gravity="center"
-            android:id="@+id/profession"
-            android:layout_marginBottom="24dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                app:layout_constraintTop_toBottomOf="@id/profilePicture"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:textSize="16sp"
+                android:textColorHint="@color/hint_color"
+                android:background="@drawable/main_edittext"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:gravity="center"
+                android:id="@+id/nickname" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            app:layout_constraintTop_toBottomOf="@id/nicknameEditText"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/updateBtn"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:textSize="16sp"
-            android:textColorHint="@color/hint_color"
-            android:background="@drawable/main_edittext"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="12dp"
-            android:gravity="center"
-            android:id="@+id/professionEditText"
-            android:visibility="gone"
-            android:layout_marginBottom="24dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                app:layout_constraintTop_toBottomOf="@id/profilePicture"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:textSize="16sp"
+                android:textColorHint="@color/hint_color"
+                android:background="@drawable/main_edittext"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:gravity="center"
+                android:id="@+id/nicknameEditText"
+                android:visibility="gone"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="Update"
-            android:textSize="16sp"
-            android:background="@drawable/filled_btn"
-            android:backgroundTint="#5479f1"
-            android:id="@+id/updateBtn"
-            app:layout_constraintBottom_toTopOf="@id/logout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="15dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                app:layout_constraintTop_toBottomOf="@id/nickname"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/updateBtn"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:textSize="16sp"
+                android:textColorHint="@color/hint_color"
+                android:background="@drawable/main_edittext"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:gravity="center"
+                android:id="@+id/profession"
+                android:layout_marginBottom="24dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logout"
-            android:textSize="16sp"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black"
-            android:background="@drawable/outlined_btn"
-            android:backgroundTint="@null"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/logout" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                app:layout_constraintTop_toBottomOf="@id/nicknameEditText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/updateBtn"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:textSize="16sp"
+                android:textColorHint="@color/hint_color"
+                android:background="@drawable/main_edittext"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:gravity="center"
+                android:id="@+id/professionEditText"
+                android:visibility="gone"
+                android:layout_marginBottom="24dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Update"
+                android:textSize="16sp"
+                android:background="@drawable/filled_btn"
+                android:backgroundTint="#5479f1"
+                android:id="@+id/updateBtn"
+                app:layout_constraintBottom_toTopOf="@id/logout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="15dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:textSize="16sp"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:background="@drawable/outlined_btn"
+                android:backgroundTint="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/logout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -139,7 +146,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@android:color/white"
-        android:visibility="gone"
         android:id="@+id/progressBarWrapper">
 
         <ProgressBar

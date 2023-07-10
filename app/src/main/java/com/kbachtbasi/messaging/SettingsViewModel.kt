@@ -60,6 +60,7 @@ class SettingsViewModel : ViewModel() {
                     _nickname.value = snapshot.child("name").getValue(String::class.java)
                     _profession.value = snapshot.child("profession").getValue(String::class.java)
                     _profilePictureUrl.value = snapshot.child("profilePictureUrl").getValue(String::class.java)
+                    _error.value = null
                 }
 
                 override fun onCancelled(error: DatabaseError) {

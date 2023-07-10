@@ -1,5 +1,6 @@
 package com.kbachtbasi.messaging
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +13,10 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.values
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
+import java.util.UUID
 
 class SettingsViewModel : ViewModel() {
 
@@ -45,6 +50,7 @@ class SettingsViewModel : ViewModel() {
 
     private val mAuth: FirebaseAuth = Firebase.auth
     private val mDatabase: FirebaseDatabase = Firebase.database(Const.DB_URL)
+    private val mStorage: FirebaseStorage = FirebaseStorage.getInstance()
 
     fun fetchData() {
         mDatabase.getReference("users")
@@ -181,5 +187,30 @@ class SettingsViewModel : ViewModel() {
             .addOnFailureListener {
                 _error.value = it.message
             }
+    }
+
+    fun uploadImage(it: Uri) {
+        val imagePath = "images/${UUID.randomUUID()}"
+        val imageRef = mStorage.reference.child(imagePath)
+
+        imageRef.putFile(it)
+            .addOnSuccessListener { taskSnapshot ->
+                imageRef.downloadUrl.addOnCompleteListener {
+                    mDatabase.getReference("users")
+                        .child(mAuth.currentUser!!.uid)
+                        .child("profilePictureUrl")
+                        .setValue(it.result.toString())
+                        .addOnCompleteListener {
+                            _error.value = null
+                        }
+                        .addOnFailureListener {
+                            _error.value = it.message
+                        }
+                }.addOnFailureListener {
+                    _error.value = it.message
+                }
+        }.addOnFailureListener { e ->
+            _error.value = e.message
+        }
     }
 }

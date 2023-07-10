@@ -1,17 +1,23 @@
 package com.kbachtbasi.messaging
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.kbachtbasi.messaging.databinding.FragmentSettingsBinding
+
 
 class SettingsFragment : Fragment() {
 
@@ -53,7 +59,6 @@ class SettingsFragment : Fragment() {
                 Glide.with(this)
                     .load(imageUrl)
                     .circleCrop()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(binding.profilePicture)
             }
         }
@@ -123,6 +128,17 @@ class SettingsFragment : Fragment() {
             }
 
         })
+
+        val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                binding.progressBarWrapper.visibility = View.VISIBLE
+                viewModel.uploadImage(it)
+            }
+        }
+
+        binding.profilePicture.setOnClickListener {
+            getContent.launch("image/*")
+        }
 
         return binding.root
     }

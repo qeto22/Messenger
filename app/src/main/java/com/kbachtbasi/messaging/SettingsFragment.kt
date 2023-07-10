@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
 import com.kbachtbasi.messaging.databinding.FragmentSettingsBinding
 
@@ -43,6 +45,16 @@ class SettingsFragment : Fragment() {
                 binding.professionEditText.visibility = View.GONE
 
                 binding.updateBtn.text = "Update"
+            }
+        }
+
+        viewModel.profilePictureUrl.observe(viewLifecycleOwner) { imageUrl ->
+            if (imageUrl != null) {
+                Glide.with(this)
+                    .load(imageUrl)
+                    .circleCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(binding.profilePicture)
             }
         }
 

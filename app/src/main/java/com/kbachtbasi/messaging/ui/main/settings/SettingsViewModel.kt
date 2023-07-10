@@ -55,7 +55,7 @@ class SettingsViewModel : ViewModel() {
             .child(mAuth.currentUser!!.uid)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    _nickname.value = snapshot.child("name").getValue(String::class.java)
+                    _nickname.value = snapshot.child("nickname").getValue(String::class.java)
                     _profession.value = snapshot.child("profession").getValue(String::class.java)
                     _profilePictureUrl.value = snapshot.child("profilePictureUrl").getValue(String::class.java)
                     _error.value = null
@@ -159,7 +159,7 @@ class SettingsViewModel : ViewModel() {
     private fun updateUserNicknameInDb() {
         mDatabase.getReference("users")
             .child(mAuth.currentUser!!.uid)
-            .child("name")
+            .child("nickname")
             .setValue(editedNickname.value)
             .addOnCompleteListener {
                 if (profession.value != editedProfession.value) {
@@ -193,7 +193,7 @@ class SettingsViewModel : ViewModel() {
         val imageRef = mStorage.reference.child(imagePath)
 
         imageRef.putFile(it)
-            .addOnSuccessListener { taskSnapshot ->
+            .addOnSuccessListener {
                 imageRef.downloadUrl.addOnCompleteListener {
                     mDatabase.getReference("users")
                         .child(mAuth.currentUser!!.uid)

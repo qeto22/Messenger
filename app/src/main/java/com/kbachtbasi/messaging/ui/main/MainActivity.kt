@@ -11,6 +11,7 @@ import com.kbachtbasi.messaging.databinding.ActivityMainBinding
 import com.kbachtbasi.messaging.ui.login.LoginActivity
 import com.kbachtbasi.messaging.ui.main.settings.SettingsFragment
 import com.kbachtbasi.messaging.ui.main.home.HomeFragment
+import com.kbachtbasi.messaging.ui.search.SearchUserActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -56,6 +57,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             false
+        }
+
+        binding.fab.setOnClickListener {
+            val intent = Intent(this, SearchUserActivity::class.java)
+            startActivity(intent)
         }
     }
 }

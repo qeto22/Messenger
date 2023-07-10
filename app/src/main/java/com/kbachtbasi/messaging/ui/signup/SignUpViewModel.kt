@@ -85,7 +85,7 @@ class SignUpViewModel : ViewModel() {
             .setValue(profession)
         db.getReference("users")
             .child(auth.currentUser!!.uid)
-            .child("name")
+            .child("nickname")
             .setValue(nickname)
     }
 }

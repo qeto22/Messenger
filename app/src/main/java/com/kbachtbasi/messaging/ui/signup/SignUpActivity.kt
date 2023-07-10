@@ -3,6 +3,7 @@ package com.kbachtbasi.messaging.ui.signup
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.kbachtbasi.messaging.databinding.ActivitySignUpBinding

@@ -1,4 +1,4 @@
-package com.kbachtbasi.messaging
+package com.kbachtbasi.messaging.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.kbachtbasi.messaging.R
 import com.kbachtbasi.messaging.databinding.ActivityMainBinding
-
+import com.kbachtbasi.messaging.ui.login.LoginActivity
+import com.kbachtbasi.messaging.ui.main.settings.SettingsFragment
+import com.kbachtbasi.messaging.ui.main.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,7 +1,5 @@
-package com.kbachtbasi.messaging
+package com.kbachtbasi.messaging.ui.signup
 
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -12,8 +10,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.kbachtbasi.messaging.utils.Const
 import java.util.UUID
 
 class SignUpViewModel : ViewModel() {

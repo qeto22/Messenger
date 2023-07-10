@@ -1,4 +1,4 @@
-package com.kbachtbasi.messaging
+package com.kbachtbasi.messaging.ui.main.settings
 
 import android.net.Uri
 import androidx.lifecycle.LiveData
@@ -11,11 +11,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.values
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.UploadTask
+import com.kbachtbasi.messaging.utils.Const
 import java.util.UUID
 
 class SettingsViewModel : ViewModel() {

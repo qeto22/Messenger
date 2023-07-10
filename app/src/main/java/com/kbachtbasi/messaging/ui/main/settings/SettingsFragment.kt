@@ -1,9 +1,7 @@
-package com.kbachtbasi.messaging
+package com.kbachtbasi.messaging.ui.main.settings
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -14,10 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.kbachtbasi.messaging.databinding.FragmentSettingsBinding
-
 
 class SettingsFragment : Fragment() {
 

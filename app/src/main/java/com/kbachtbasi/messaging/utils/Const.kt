@@ -1,4 +1,4 @@
-package com.kbachtbasi.messaging
+package com.kbachtbasi.messaging.utils
 
 class Const {
     companion object {

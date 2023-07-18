@@ -16,8 +16,6 @@
             android:layout_height="188dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="@color/colorPrimary"
-            app:expandedTitleMarginStart="48dp"
-            app:expandedTitleMarginEnd="64dp"
             android:background="@drawable/background">
 
             <androidx.appcompat.widget.Toolbar

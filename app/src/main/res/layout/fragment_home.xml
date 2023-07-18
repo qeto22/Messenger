@@ -26,19 +26,19 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin" />
 
-            <EditText
+            <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Search"
+                android:hint="@string/search"
                 android:background="@drawable/search_edittext"
-                android:padding="10dp"
                 android:drawableStart="@drawable/search"
                 android:drawablePadding="10dp"
                 android:layout_margin="15dp"
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|enterAlways"
-                android:layout_gravity="bottom" />
+                android:layout_gravity="bottom"
+                app:iconifiedByDefault="false" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

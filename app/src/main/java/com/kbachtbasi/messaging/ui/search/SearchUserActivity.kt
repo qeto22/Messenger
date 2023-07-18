@@ -35,7 +35,7 @@ class SearchUserActivity : AppCompatActivity() {
 
         userViewModel.usersListLiveData.observe(this) { users ->
             userAdapter.setUserList(users)
-            if (users.size == 0) {
+            if (users.isEmpty()) {
                 binding.clientNotFoundMessage.visibility = View.VISIBLE
             } else {
                 binding.clientNotFoundMessage.visibility = View.GONE

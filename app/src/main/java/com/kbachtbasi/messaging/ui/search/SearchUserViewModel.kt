@@ -85,7 +85,12 @@ class UserViewModel : ViewModel() {
                     val users: MutableList<User> = mutableListOf()
                     for (userSnapshot in dataSnapshot.children) {
                         val user = userSnapshot.getValue(User::class.java)
-                        user?.let { users.add(it) }
+                        user?.let {
+                            user.id = userSnapshot.key.toString()
+                            if (user.id != auth.currentUser!!.uid) {
+                                users.add(it)
+                            }
+                        }
                     }
                     lastUserId = users.lastOrNull()?.id
                     val currentUsers = _usersListLiveData.value.orEmpty().toMutableList()

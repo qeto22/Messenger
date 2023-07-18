@@ -16,7 +16,7 @@ import java.util.UUID
 
 class SignUpViewModel : ViewModel() {
 
-    private val db = Firebase.database(Const.DB_URL);
+    private val db = Firebase.database(Const.DB_URL)
     private val auth = FirebaseAuth.getInstance()
 
     val signUpSuccessLiveData: MutableLiveData<Boolean> = MutableLiveData()

@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="hint_color">#95979a</color>
     <color name="colorPrimary">#5579f1</color>
+    <color name="friendsMessageColor">#6e7999</color>
 </resources>

@@ -2,8 +2,10 @@ package com.kbachtbasi.messaging.ui.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.kbachtbasi.messaging.R
 import com.kbachtbasi.messaging.databinding.UserItemBinding
 import com.kbachtbasi.messaging.utils.User
 
@@ -13,10 +15,18 @@ class UserAdapter(private var users: List<User>) : RecyclerView.Adapter<UserAdap
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(user: User) {
-            Glide.with(binding.root)
-                .load(user.profilePictureUrl)
-                .circleCrop()
-                .into(binding.profilePicture)
+            if (user.profilePictureUrl.isBlank()) {
+                Glide.with(binding.root)
+                    .load(AppCompatResources.getDrawable(binding.root.context, R.drawable.avatar_image_placeholder))
+                    .circleCrop()
+                    .into(binding.profilePicture)
+            } else {
+                Glide.with(binding.root)
+                    .load(user.profilePictureUrl)
+                    .circleCrop()
+                    .into(binding.profilePicture)
+            }
+
             binding.nickname.text = user.nickname
             binding.profession.text = user.profession
         }

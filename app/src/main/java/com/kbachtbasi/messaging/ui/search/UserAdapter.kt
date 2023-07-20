@@ -4,13 +4,12 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kbachtbasi.messaging.R
 import com.kbachtbasi.messaging.databinding.UserItemBinding
 import com.kbachtbasi.messaging.ui.chat.ChatActivity
-import com.kbachtbasi.messaging.ui.main.MainActivity
+import com.kbachtbasi.messaging.utils.Const
 import com.kbachtbasi.messaging.utils.User
 
 class UserAdapter(private var users: List<User>) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
@@ -35,6 +34,8 @@ class UserAdapter(private var users: List<User>) : RecyclerView.Adapter<UserAdap
             binding.profession.text = user.profession
             binding.root.setOnClickListener {
                 val intent = Intent(binding.root.context, ChatActivity::class.java)
+                intent.putExtra(Const.FRIEND_DATA, user)
+
                 binding.root.context.startActivity(intent)
             }
         }

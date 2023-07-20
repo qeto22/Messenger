@@ -12,7 +12,7 @@ import com.kbachtbasi.messaging.utils.Message
 import java.text.DateFormat
 import java.util.Locale
 
-class ChatAdapter(private var messages: List<Message>, private val currentUserId: String) : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
+class ChatAdapter(private var messages: MutableList<Message>, private val currentUserId: String) : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ChatItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -43,4 +43,8 @@ class ChatAdapter(private var messages: List<Message>, private val currentUserId
         return messages.size
     }
 
+    fun addItems(newMessages: List<Message>) {
+        messages.addAll(newMessages)
+        notifyDataSetChanged()
+    }
 }

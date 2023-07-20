@@ -1,9 +1,7 @@
 package com.kbachtbasi.messaging.utils
 
-import java.util.Date
-
 data class Message(
-    var sendTime: Date = Date(),
+    var sendTime: Long = System.currentTimeMillis(),
     var message: String = "",
     var senderId: String = "",
 )

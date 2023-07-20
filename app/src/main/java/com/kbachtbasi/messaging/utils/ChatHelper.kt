@@ -9,6 +9,10 @@ class ChatHelper {
             return userIdList[0] + ":" + userIdList[1]
         }
 
+        fun getFriendId(chatId: String, currentUserId: String): String {
+            return chatId.replace(currentUserId, "").replace(":", "")
+        }
+
     }
 
 }

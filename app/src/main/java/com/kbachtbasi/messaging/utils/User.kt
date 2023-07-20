@@ -3,8 +3,8 @@ package com.kbachtbasi.messaging.utils
 import java.io.Serializable
 
 data class User(
-    val nickname: String = "",
+    var nickname: String = "",
     var id: String = "",
-    val profession: String = "",
-    val profilePictureUrl: String = ""
+    var profession: String = "",
+    var profilePictureUrl: String = ""
 ) : Serializable

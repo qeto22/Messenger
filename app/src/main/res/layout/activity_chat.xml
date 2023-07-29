@@ -39,7 +39,16 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:layout_collapseMode="pin" />
+                    app:layout_collapseMode="pin">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/back"
+                        app:tint="@android:color/white"
+                        android:id="@+id/backBtn"/>
+
+                </androidx.appcompat.widget.Toolbar>
 
             </com.google.android.material.appbar.SubtitleCollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>

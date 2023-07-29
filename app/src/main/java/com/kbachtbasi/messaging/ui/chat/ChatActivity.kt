@@ -63,5 +63,9 @@ class ChatActivity : AppCompatActivity() {
 
         binding.messagesRecyclerView.layoutManager = LinearLayoutManager(binding.root.context)
         binding.messagesRecyclerView.adapter = chatAdapter
+
+        binding.backBtn.setOnClickListener {
+            finish()
+        }
     }
 }

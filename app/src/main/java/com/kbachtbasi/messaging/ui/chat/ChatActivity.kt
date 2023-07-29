@@ -1,9 +1,12 @@
 package com.kbachtbasi.messaging.ui.chat
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.TypedValue
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -12,6 +15,8 @@ import com.kbachtbasi.messaging.utils.ChatHelper
 import com.kbachtbasi.messaging.utils.Const
 import com.kbachtbasi.messaging.utils.Message
 import com.kbachtbasi.messaging.utils.User
+import kotlin.math.abs
+
 
 class ChatActivity : AppCompatActivity() {
 
@@ -51,6 +56,15 @@ class ChatActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.collapsingToolbar.title = friend.nickname
+        binding.collapsingToolbar.subtitle = friend.profession
+        if (friend.profilePictureUrl.isNotBlank()) {
+            Glide.with(binding.root)
+                .load(friend.profilePictureUrl)
+                .circleCrop()
+                .into(binding.avatar)
+        }
+
         binding.messageTextWrapper.setOnClickListener {
             binding.messageText.requestFocus()
         }
@@ -67,5 +81,21 @@ class ChatActivity : AppCompatActivity() {
         binding.backBtn.setOnClickListener {
             finish()
         }
+
+        binding.collapsingAppbar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
+            val collapsedPercentage =
+                abs(verticalOffset) / appBarLayout.totalScrollRange.toFloat()
+
+            val imageViewLayoutParams = binding.avatar.layoutParams as ViewGroup.MarginLayoutParams
+            imageViewLayoutParams.bottomMargin = dpToPx((24 * (1 - collapsedPercentage)))
+            binding.avatar.layoutParams = imageViewLayoutParams
+        }
+    }
+
+    private fun dpToPx(dp: Float): Int {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, dp, resources
+                .displayMetrics
+        ).toInt()
     }
 }

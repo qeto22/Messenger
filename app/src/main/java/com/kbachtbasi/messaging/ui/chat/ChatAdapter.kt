@@ -1,6 +1,7 @@
 package com.kbachtbasi.messaging.ui.chat
 
 import android.util.LayoutDirection
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,10 @@ class ChatAdapter(private var messages: MutableList<Message>, private val curren
                 binding.chatItemLayout.layoutDirection = View.LAYOUT_DIRECTION_RTL
                 binding.textMessage.background = AppCompatResources.getDrawable(binding.root.context, R.drawable.chat_background_gray)
                 binding.textMessage.setTextColor(binding.root.context.getColor(R.color.friendsMessageColor))
+            } else {
+                binding.chatItemLayout.layoutDirection = View.LAYOUT_DIRECTION_LTR
+                binding.textMessage.background = AppCompatResources.getDrawable(binding.root.context, R.drawable.chat_background_blue)
+                binding.textMessage.setTextColor(binding.root.context.getColor(R.color.white))
             }
 
             binding.textMessage.text = message.message
@@ -44,7 +49,8 @@ class ChatAdapter(private var messages: MutableList<Message>, private val curren
     }
 
     fun addItems(newMessages: List<Message>) {
+        val currItemsSize = messages.size
         messages.addAll(newMessages)
-        notifyDataSetChanged()
+        notifyItemRangeInserted(currItemsSize + 1, newMessages.size)
     }
 }

@@ -12,4 +12,6 @@
     <string name="client_with_given_nickname_was_not_found">Client with given nickname was not found!</string>
     <string name="search">Search</string>
     <string name="message">Message</string>
+    <string name="update">Update</string>
+    <string name="logout">Logout</string>
 </resources>

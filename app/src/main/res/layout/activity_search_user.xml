@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,13 +18,13 @@
                 android:layout_gravity="bottom">
 
                 <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="@dimen/back_btn_size"
+                    android:layout_height="@dimen/back_btn_size"
                     android:src="@drawable/back"
                     android:layout_gravity="center"
                     app:tint="@android:color/white"
                     android:id="@+id/backBtn"
-                    android:layout_marginStart="5dp"/>
+                    android:layout_marginStart="@dimen/back_btn_start_margin"/>
 
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/searchBar"
@@ -34,11 +33,11 @@
                     android:hint="@string/search"
                     android:background="@drawable/search_edittext"
                     android:drawableStart="@drawable/search"
-                    android:drawablePadding="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginStart="5dp"
+                    android:drawablePadding="@dimen/search_btn_padding"
+                    android:layout_marginTop="@dimen/search_margin"
+                    android:layout_marginBottom="@dimen/search_margin"
+                    android:layout_marginEnd="@dimen/search_margin"
+                    android:layout_marginStart="@dimen/search_margin_start"
                     app:iconifiedByDefault="false" />
 
             </LinearLayout>

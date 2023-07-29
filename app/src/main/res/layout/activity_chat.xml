@@ -23,14 +23,12 @@
             <com.google.android.material.appbar.SubtitleCollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="188dp"
+                android:layout_height="@dimen/chat_collapsing_toolbar_height"
                 app:contentScrim="@color/colorPrimary"
                 android:fitsSystemWindows="true"
-                app:expandedTitleMarginEnd="64dp"
-                app:expandedTitleMarginStart="48dp"
+                app:expandedTitleMarginEnd="@dimen/chat_expanded_margin_end"
+                app:expandedTitleMarginStart="@dimen/chat_expanded_margin_start"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="Ketevan Bachalashvili"
-                app:subtitle="Software Engineer"
                 app:expandedTitleTextAppearance="@style/ExpandedAppBarTitle"
                 app:expandedSubtitleTextAppearance="@style/ExpandedAppBarSubtitle"
                 app:collapsedTitleTextAppearance="@style/CollapsedAppBarTitle"
@@ -43,8 +41,8 @@
                     app:layout_collapseMode="pin">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/chat_avatar_size"
+                        android:layout_height="@dimen/chat_avatar_size"
                         android:src="@drawable/back"
                         app:tint="@android:color/white"
                         android:id="@+id/backBtn"/>
@@ -57,8 +55,8 @@
                     android:layout_gravity="bottom|end"
                     android:src="@drawable/avatar_image_placeholder"
                     android:id="@+id/avatar"
-                    android:layout_marginBottom="24dp"
-                    android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="@dimen/chat_avatar_bottom_margin"
+                    android:layout_marginEnd="@dimen/dimenchat_avatar_end_margin"
                     />
 
             </com.google.android.material.appbar.SubtitleCollapsingToolbarLayout>
@@ -82,7 +80,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="10dp">
+        android:layout_margin="@dimen/chat_wrapper_margin">
 
         <EditText
             android:id="@+id/messageText"
@@ -90,7 +88,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/chat_edittext"
             android:layout_alignParentBottom="true"
-            android:padding="25dp"
+            android:padding="@dimen/chat_edit_text_padding"
             android:hint="@string/message"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,13 +96,13 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/send_btn_size"
+            android:layout_height="@dimen/send_btn_size"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/messageText"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/send_btn_end_margin"
             android:src="@drawable/circle"
             android:id="@+id/sendMessageBtn"/>
 

@@ -15,8 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:layout_width="192dp"
-            android:layout_height="192dp"
+            android:layout_width="@dimen/login_image_size"
+            android:layout_height="@dimen/login_image_size"
             android:src="@drawable/avatar_image_placeholder"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,15 +30,15 @@
             app:layout_constraintTop_toBottomOf="@id/loginImage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:textSize="16sp"
+            android:layout_marginTop="@dimen/login_username_margin"
+            android:layout_marginStart="@dimen/login_username_margin"
+            android:layout_marginEnd="@dimen/login_username_margin"
+            android:textSize="@dimen/login_form_text_size"
             android:hint="@string/enter_your_nickname"
             android:textColorHint="@color/hint_color"
             android:background="@drawable/main_edittext"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="12dp"
+            android:paddingHorizontal="@dimen/login_form_padding_horizontal"
+            android:paddingVertical="@dimen/login_form_padding_vertical"
             android:gravity="center"
             android:id="@+id/usernameInput" />
 
@@ -51,31 +51,31 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/signInBtn"
             android:inputType="textPassword"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:textSize="16sp"
+            android:layout_marginTop="@dimen/login_password_top_margin"
+            android:layout_marginStart="@dimen/login_username_margin"
+            android:layout_marginEnd="@dimen/login_username_margin"
+            android:textSize="@dimen/login_form_text_size"
             android:hint="@string/enter_your_password"
             android:textColorHint="@color/hint_color"
             android:background="@drawable/main_edittext"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="12dp"
+            android:paddingHorizontal="@dimen/login_form_padding_horizontal"
+            android:paddingVertical="@dimen/login_form_padding_vertical"
             android:gravity="center"
             android:id="@+id/passwordInput" />
         
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/login_btn_height"
             android:text="@string/sign_in"
-            android:textSize="16sp"
+            android:textSize="@dimen/login_form_text_size"
             android:textAllCaps="true"
             android:background="@drawable/filled_btn"
-            android:backgroundTint="#5479f1"
+            android:backgroundTint="@color/colorPrimary"
             android:id="@+id/signInBtn"
             app:layout_constraintTop_toBottomOf="@id/passwordInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="12dp" />
+            android:layout_marginTop="@dimen/login_btn_margin_top" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -87,15 +87,15 @@
         app:layout_constraintBottom_toTopOf="@+id/signUp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="8dp"
-        android:textSize="15sp"
+        android:layout_marginBottom="@dimen/signup_hint_margin_bottom"
+        android:textSize="@dimen/not_registered_text_size"
         android:id="@+id/notRegisteredHint"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_up"
-        android:textSize="16sp"
+        android:textSize="@dimen/login_form_text_size"
         android:textAllCaps="true"
         android:textColor="@android:color/black"
         android:letterSpacing="0.12"
@@ -104,7 +104,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/signup_btn_bottom_margin"
         android:id="@+id/signUp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

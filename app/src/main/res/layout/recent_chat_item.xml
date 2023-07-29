@@ -7,19 +7,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/recent_chat_avatar_size"
+        android:layout_height="@dimen/recent_chat_avatar_size"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:src="@drawable/avatar_image_placeholder"
-        android:layout_margin="15dp"
+        android:layout_margin="@dimen/recent_chat_avatar_margin"
         android:id="@+id/profilePicture"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="@dimen/recent_chat_avatar_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/profilePicture"
@@ -29,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:textSize="19sp"
+            android:textSize="@dimen/recent_chat_time_passed_text"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/timePassed"
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/darker_gray"
-            android:textSize="14sp"
+            android:textSize="@dimen/recent_chat_nickname_text"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBaseline_toBaselineOf="@id/nickname"
@@ -48,10 +48,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="@dimen/recent_chat_message_text"
             android:textColor="@android:color/darker_gray"
             app:layout_constraintTop_toBottomOf="@id/nickname"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/recent_chat_message_top_margin"
             android:maxLines="2"
             android:ellipsize="end"
             android:id="@+id/lastMessage" />

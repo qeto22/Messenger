@@ -9,18 +9,15 @@
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mainActivityFragmentContainer"
-        >
-
-    </androidx.fragment.app.FragmentContainerView>
+        android:id="@+id/mainActivityFragmentContainer" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="@dimen/main_bottom_navbar_height"
         android:id="@+id/bottomNavigationBar"
         android:layout_gravity="bottom"
-        app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="10dp"
+        app:fabCradleMargin="@dimen/fab_cradle_margin"
+        app:fabCradleRoundedCornerRadius="@dimen/fab_cradle_corner_radius"
         app:fabCradleVerticalOffset="0dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

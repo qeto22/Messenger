@@ -19,14 +19,21 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
+            <com.google.android.material.appbar.SubtitleCollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="188dp"
                 app:contentScrim="@color/colorPrimary"
+                android:fitsSystemWindows="true"
                 app:expandedTitleMarginEnd="64dp"
                 app:expandedTitleMarginStart="48dp"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:title="Ketevan Bachalashvili"
+                app:subtitle="Software Engineer"
+                app:expandedTitleTextAppearance="@style/ExpandedAppBarTitle"
+                app:expandedSubtitleTextAppearance="@style/ExpandedAppBarSubtitle"
+                app:collapsedTitleTextAppearance="@style/CollapsedAppBarTitle"
+                app:collapsedSubtitleTextAppearance="@style/CollapsedAppBarSubtitle">
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
@@ -34,7 +41,7 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin" />
 
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.SubtitleCollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView

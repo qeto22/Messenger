@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "320817344788",
+    "firebase_url": "https://messaging-19bd0-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "messaging-19bd0",
+    "storage_bucket": "messaging-19bd0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320817344788:android:a174762738ab2506589201",
+        "android_client_info": {
+          "package_name": "com.kbachtbasi.messaging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320817344788-f8l1t8ccepi2u76p9hj0if6ojq4jkj08.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6XFuOXgnh7g4hypV8Rzt9F2Og-Vz6Jyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320817344788-f8l1t8ccepi2u76p9hj0if6ojq4jkj08.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
